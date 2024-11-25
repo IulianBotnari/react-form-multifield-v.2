@@ -2,9 +2,17 @@ import { useEffect, useState } from 'react'
 
 import Style from './AppPost.module.css'
 
-export default function AppPost() {
+export default function AppPost({ setSearchData }) {
 
     const [posts, setPosts] = useState([])
+    const [newPost, setNewPosts] = useState([])
+
+
+    const searchData = setSearchData
+    useEffect(() => {
+        console.log(searchData);
+        setNewPosts(posts.filter(post => post.title.toLowerCase().includes(searchData.toLowerCase())))
+    }, [searchData])
 
 
     async function fetchPost() {
@@ -45,10 +53,17 @@ export default function AppPost() {
         }
     }
 
+
+
+
+
+
+
+
     return (
 
         <>
-            {posts?.map((post, index) => (
+            {newPost?.map((post, index) => (
 
                 <div key={index} id-post={post.id} className="">
                     <div className="d-flex justify-content-between p-4" >

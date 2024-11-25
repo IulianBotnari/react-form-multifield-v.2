@@ -7,20 +7,24 @@ import './App.css'
 
 function App() {
 
+  const [searchPost, setSearchPost] = useState('')
+
+
+
 
   return (
     <>
       <div className="container d-flex flex-column mb-3">
 
         <header className="d-flex justify-content-between p-5">
-          <Appheader />
+          <Appheader setSearchData={setSearchPost} />
 
         </header>
 
         <main className="p-5">
           <AppForm />
 
-          <AppPost />
+          <AppPost setSearchData={searchPost} />
 
         </main>
 
